@@ -45,10 +45,10 @@
     </flux:navbar>
 
     <flux:dropdown position="top" align="start">
-      <flux:profile avatar="https://api.dicebear.com/7.x/pixel-art/svg?seed=nome_aqui" />
+      <flux:profile avatar="https://api.dicebear.com/7.x/pixel-art/svg?seed={{ urlencode(Auth::user()->name) }}" />
 
       <flux:menu>
-        <flux:navmenu.item href="#" icon="user">nome_aqui</flux:navmenu.item>
+        <flux:navmenu.item href="#" icon="user">{{ Auth::user()->name }}</flux:navmenu.item>
 
         <flux:menu.separator />
 
