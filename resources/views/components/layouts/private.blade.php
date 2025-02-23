@@ -45,14 +45,24 @@
     </flux:navbar>
 
     <flux:dropdown position="top" align="start">
+      @auth
       <flux:profile avatar="https://api.dicebear.com/7.x/pixel-art/svg?seed={{ urlencode(Auth::user()->name) }}" />
+      @else
+      <flux:profile avatar="https://api.dicebear.com/7.x/pixel-art/svg?seed=Guest" />
+      @endauth
 
       <flux:menu>
         <flux:navmenu.item href="#" icon="user">{{ Auth::user()->name }}</flux:navmenu.item>
 
         <flux:menu.separator />
 
-        <flux:menu.item icon="arrow-right-start-on-rectangle">Sair</flux:menu.item>
+        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">
+          @csrf
+        </form>
+
+        <flux:menu.item icon="arrow-right-start-on-rectangle" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+          Sair
+        </flux:menu.item>
       </flux:menu>
     </flux:dropdown>
   </flux:header>

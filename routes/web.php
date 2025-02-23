@@ -1,6 +1,7 @@
 <?php
 
 //* Importações de libs
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //* Componentes Livewire
@@ -12,6 +13,13 @@ use App\Livewire\Private\Home;
 use App\Livewire\Private\Unit\UnitsList;
 
 Route::get('/login', Login::class)->name('login');
+Route::post('/logout', function () {
+  Auth::logout();
+  session()->invalidate();
+  session()->regenerateToken();
+
+  return redirect()->route('login');
+})->name('logout');
 
 Route::middleware('auth')->group(function () {
   Route::get('/', Home::class)->name('home');
