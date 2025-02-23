@@ -41,7 +41,7 @@ class Login extends Component
 
     session(["auth_token" => $token]); // Guarda o token na sessão
 
-    return redirect()->route("dashboard"); // Redireciona após login
+    return redirect()->route("home"); // Redireciona após login
   }
 
   public function render()
