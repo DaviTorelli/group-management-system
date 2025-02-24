@@ -17,15 +17,15 @@ class CreateEconomicGroup extends Component
 
   public function store()
   {
-    try {
-      $this->validate([
-        "name" => "required|min:2|max:100",
-      ], [
-        "required" => "Campo obrigatório",
-        "min"      => "O campo deve ter no mínimo :min caracteres",
-        "max"      => "O campo deve ter no máximo :max caracteres"
-      ]);
+    $this->validate([
+      "name" => "required|min:2|max:100",
+    ], [
+      "required" => "Campo obrigatório",
+      "min"      => "O campo deve ter no mínimo :min caracteres",
+      "max"      => "O campo deve ter no máximo :max caracteres"
+    ]);
 
+    try {
       EconomicGroup::create(["name" => $this->name]);
     } catch (\Exception $e) {
       session()->flash("error", "Erro ao criar grupo econômico");

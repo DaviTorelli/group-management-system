@@ -1,6 +1,6 @@
 <flux:main container>
-  <flux:heading size="xl" level="1">Grupos Econômicos</flux:heading>
-  <flux:subheading size="lg" class="mb-6">Veja todos os grupos econômicos cadastrados em seu sistema.</flux:subheading>
+  <flux:heading size="xl" level="1">Bandeiras</flux:heading>
+  <flux:subheading size="lg" class="mb-6">Veja todas as bandeiras cadastradas em seu sistema.</flux:subheading>
 
   <flux:separator variant="subtle" />
 
@@ -27,14 +27,14 @@
   <div class="container pt-4">
     <div class="overflow-hidden bg-white rounded-lg shadow-md dark:bg-neutral-900">
       <div class="flex items-center justify-end p-4">
-        <a class="px-4 py-2 font-bold text-white rounded bg-lime-600 hover:bg-lime-700" href="{{ route('economic-groups.create') }}">
-          + Adicionar Grupo
+        <a class="px-4 py-2 font-bold text-white rounded bg-lime-600 hover:bg-lime-700" href="{{ route('flags.create') }}">
+          + Adicionar Bandeira
         </a>
       </div>
 
-      @if ($economicGroups->isEmpty())
+      @if ($flags->isEmpty())
       <div class="p-4 text-center text-gray-600 dark:text-gray-300">
-        Nenhum grupo econômico cadastrado.
+        Nenhuma bandeira encontrada.
       </div>
       @else
       <table class="w-full text-left border-collapse">
@@ -70,29 +70,29 @@
           </tr>
         </thead>
         <tbody class="text-sm text-gray-700 divide-y divide-gray-200 dark:text-gray-300 dark:divide-gray-600">
-          @foreach ($economicGroups as $group)
-          <tr class="hover:bg-gray-50 dark:hover:bg-gray-600" key="{{ $group->id }}">
-            <td class="px-6 py-3">{{ $group->id }}</td>
-            <td class="px-6 py-3">{{ $group->name }}</td>
-            <td class="px-6 py-3">{{ $group->created_at->format('d/m/Y - H:i') }}</td>
-            <td class="px-6 py-3">{{ $group->updated_at->format('d/m/Y - H:i') }}</td>
+          @foreach ($flags as $flag)
+          <tr class="hover:bg-gray-50 dark:hover:bg-gray-600" key="{{ $flag->id }}">
+            <td class="px-6 py-3">{{ $flag->id }}</td>
+            <td class="px-6 py-3">{{ $flag->name }}</td>
+            <td class="px-6 py-3">{{ $flag->created_at->format('d/m/Y - H:i') }}</td>
+            <td class="px-6 py-3">{{ $flag->updated_at->format('d/m/Y - H:i') }}</td>
             <td class="p-2 text-right">
               <span class="flex items-center justify-end gap-2">
                 <flux:button
-                  href="/economic-groups/edit/{{ $group->id }}"
+                  href="/flags/edit/{{ $flag->id }}"
                   icon="pencil-square"
                   variant="primary" />
 
-                <flux:modal.trigger :name="'delete-economic-group-'.$group->id">
+                <flux:modal.trigger :name="'delete-flag-'.$flag->id">
                   <flux:button icon="trash" variant="danger" />
                 </flux:modal.trigger>
               </span>
 
             </td>
           </tr>
-          <flux:modal :name="'delete-economic-group-'.$group->id" class="min-w-[22rem] space-y-6">
+          <flux:modal :name="'delete-flag-'.$flag->id" class="min-w-[22rem] space-y-6">
             <div>
-              <flux:heading size="lg">Deletar grupo econômico?</flux:heading>
+              <flux:heading size="lg">Deletar bandeira?</flux:heading>
 
               <flux:subheading>
                 <p>Essa é uma ação irreversível.</p>
@@ -106,13 +106,13 @@
                 <flux:button variant="ghost">Cancelar</flux:button>
               </flux:modal.close>
 
-              <flux:button wire:click="destroy({{ $group->id }})" variant="danger">Excluir</flux:button>
+              <flux:button wire:click="destroy({{ $flag->id }})" variant="danger">Excluir</flux:button>
             </div>
           </flux:modal>
           @endforeach
         </tbody>
       </table>
-      <div class="p-4">{{ $economicGroups->links() }}</div>
+      <div class="p-4">{{ $flags->links() }}</div>
       @endif
     </div>
   </div>

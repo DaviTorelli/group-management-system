@@ -34,15 +34,14 @@ class EditEconomicGroup extends Component
 
   public function update()
   {
+    $this->validate([
+      "name" => "required|min:2",
+    ], [
+      "required" => "Campo obrigatório",
+      "min"      => "O campo deve ter no mínimo :min caracteres",
+      "max"      => "O campo deve ter no máximo :max caracteres"
+    ]);
     try {
-      $this->validate([
-        "name" => "required|min:2",
-      ], [
-        "required" => "Campo obrigatório",
-        "min"      => "O campo deve ter no mínimo :min caracteres",
-        "max"      => "O campo deve ter no máximo :max caracteres"
-      ]);
-
       EconomicGroup::findOrFail($this->groupId)->update(["name" => $this->name]);
     } catch (\Exception $e) {
       session()->flash("error", "Erro ao editar grupo econômico");
