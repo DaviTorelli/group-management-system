@@ -6,11 +6,13 @@ use Illuminate\Support\Facades\Route;
 
 //* Componentes Livewire
 use App\Livewire\Auth\Login;
-use App\Livewire\Private\Brand\BrandsList;
 use App\Livewire\Private\EconomicGroup\CreateEconomicGroup;
 use App\Livewire\Private\EconomicGroup\EconomicGroupsList;
 use App\Livewire\Private\EconomicGroup\EditEconomicGroup;
 use App\Livewire\Private\Employee\EmployeesList;
+use App\Livewire\Private\Flag\CreateFlag;
+use App\Livewire\Private\Flag\EditFlag;
+use App\Livewire\Private\Flag\FlagsList;
 use App\Livewire\Private\Home;
 use App\Livewire\Private\Unit\UnitsList;
 
@@ -32,8 +34,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/edit/{id}', EditEconomicGroup::class)->name('economic-groups.edit');
   });
 
-  Route::prefix('brands')->group(function () {
-    Route::get('/', BrandsList::class);
+  Route::prefix('flags')->group(function () {
+    Route::get('/', FlagsList::class)->name('flags');
+    Route::get('/create', CreateFlag::class)->name('flags.create');
+    Route::get('/edit/{id}', EditFlag::class)->name('flags.edit');
   });
 
   Route::prefix('units')->group(function () {
