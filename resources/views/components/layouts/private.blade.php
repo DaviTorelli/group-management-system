@@ -21,9 +21,9 @@
     <flux:navbar class="-mb-px max-lg:hidden">
       <flux:navbar.item icon="home" href="/">Home</flux:navbar.item>
       <flux:navbar.item icon="wallet" href="/economic-groups">Grupos</flux:navbar.item>
-      <flux:navbar.item icon="flag" href="/brands">Bandeiras</flux:navbar.item>
-      <flux:navbar.item icon="building-office" href="/units">Unidades</flux:navbar.item>
-      <flux:navbar.item icon="briefcase" href="/employees">Colaboradores</flux:navbar.item>
+      <flux:navbar.item icon="flag">Bandeiras</flux:navbar.item>
+      <flux:navbar.item icon="building-office">Unidades</flux:navbar.item>
+      <flux:navbar.item icon="briefcase">Colaboradores</flux:navbar.item>
       <flux:separator vertical variant="subtle" class="my-2" />
       <flux:navbar.item icon="chart-pie" href="#">Relatórios</flux:navbar.item>
     </flux:navbar>
@@ -73,8 +73,8 @@
     <flux:brand href="#" logo="https://static.vecteezy.com/system/resources/thumbnails/024/071/650/small_2x/glowing-neon-circle-for-your-decoration-neon-light-round-frame-blank-space-for-text-ultraviolet-spectrum-ring-symbol-halo-png.png" name="GMS" class="px-2" />
 
     <flux:navlist variant="outline">
-      <flux:navlist.item icon="home" href="#" current>Home</flux:navlist.item>
-      <flux:navlist.item icon="wallet" href="#">Grupos</flux:navlist.item>
+      <flux:navlist.item icon="home" href="/">Home</flux:navlist.item>
+      <flux:navlist.item icon="wallet" href="/economic-groups">Grupos</flux:navlist.item>
       <flux:navlist.item icon="flag" href="#">Bandeiras</flux:navlist.item>
       <flux:navlist.item icon="building-office" href="#">Unidades</flux:navlist.item>
       <flux:navlist.item icon="briefcase" href="#">Colaboradores</flux:navlist.item>
