@@ -14,6 +14,17 @@
       placeholder="Ex: Bandeira ABC"
       wire:model="name" />
 
+    <flux:select
+      label="Grupo Econômico"
+      wire:model="economicGroupId">
+      <option value="">Selecione um grupo</option>
+      @foreach ($economicGroups as $group)
+      <option value="{{ $group['id'] }}" {{ $economicGroupId == $group['id'] ? 'selected' : '' }}>
+        {{ $group['name'] }}
+      </option>
+      @endforeach
+    </flux:select>
+
     @if (session()->has('error'))
     <div class="flex items-center gap-2 p-4 text-red-700 transition-opacity bg-red-100 border border-red-500 rounded-lg dark:bg-red-900 dark:text-red-300 dark:border-red-700">
       <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 text-red-500 dark:text-red-400" viewBox="0 0 20 20" fill="currentColor">
