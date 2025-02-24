@@ -7,7 +7,9 @@ use Illuminate\Support\Facades\Route;
 //* Componentes Livewire
 use App\Livewire\Auth\Login;
 use App\Livewire\Private\Brand\BrandsList;
+use App\Livewire\Private\EconomicGroup\CreateEconomicGroup;
 use App\Livewire\Private\EconomicGroup\EconomicGroupsList;
+use App\Livewire\Private\EconomicGroup\EditEconomicGroup;
 use App\Livewire\Private\Employee\EmployeesList;
 use App\Livewire\Private\Home;
 use App\Livewire\Private\Unit\UnitsList;
@@ -25,11 +27,13 @@ Route::middleware('auth')->group(function () {
   Route::get('/', Home::class)->name('home');
 
   Route::prefix('economic-groups')->group(function () {
-    Route::get('/', EconomicGroupsList::class);
+    Route::get('/', EconomicGroupsList::class)->name('economic-groups');
+    Route::get('/create', CreateEconomicGroup::class)->name('economic-groups.create');
+    Route::get('/edit/{id}', EditEconomicGroup::class)->name('economic-groups.edit');
   });
 
   Route::prefix('brands')->group(function () {
-    Route::get('/', BrandsList::class); // Removido "/brands" duplicado
+    Route::get('/', BrandsList::class);
   });
 
   Route::prefix('units')->group(function () {
