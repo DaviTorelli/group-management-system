@@ -10,6 +10,14 @@
       placeholder="Ex: Bandeira ABC"
       wire:model="name" />
 
+    <flux:select
+      label="Grupo Econômico"
+      wire:model="economicGroupId">
+      <option value="">Selecione um grupo econômico</option>
+      @foreach ($economicGroups as $group)
+      <option value="{{ $group['id'] }}">{{ $group['name'] }}</option>
+      @endforeach
+    </flux:select>
 
     @if (session()->has('error'))
     <div class="flex items-center gap-2 p-4 text-red-700 transition-opacity bg-red-100 border border-red-500 rounded-lg dark:bg-red-900 dark:text-red-300 dark:border-red-700">

@@ -3,6 +3,7 @@
 namespace App\Livewire\Private\Flag;
 
 //* Importações Livewire
+use App\Models\EconomicGroup;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
@@ -14,23 +15,29 @@ class CreateFlag extends Component
   #[Layout("components.layouts.private")]
 
   public string $name = "";
-  public int $economicGroupId;
+  public int|null $economicGroupId = null;
+  public array $economicGroups = [];
+
+  public function mount()
+  {
+    $this->economicGroups = EconomicGroup::all()->toArray();
+  }
 
   public function store()
   {
     $this->validate([
       "name" => "required|min:2|max:100",
-      "economicGroupId" => "required|in:economic_groups,id"
+      "economicGroupId" => "required|exists:economic_groups,id"
     ], [
       "required" => "Campo obrigatório",
-      "min"      => "O campo deve ter no mínimo :min caracteres",
-      "max"      => "O campo deve ter no máximo :max caracteres",
-      "economicGroupId.in" => "O grupo econômico não foi encontrado"
+      "min" => "O campo deve ter no mínimo :min caracteres",
+      "max" => "O campo deve ter no máximo :max caracteres",
+      "economicGroupId.exists" => "O grupo econômico não foi encontrado"
     ]);
 
     try {
       Flag::create([
-        "name"              => $this->name,
+        "name" => $this->name,
         "economic_group_id" => $this->economicGroupId
       ]);
     } catch (\Exception $e) {
@@ -43,6 +50,8 @@ class CreateFlag extends Component
 
   public function render()
   {
-    return view('livewire.private.flag.create-flag');
+    return view('livewire.private.flag.create-flag', [
+      'economicGroups' => $this->economicGroups
+    ]);
   }
 }
