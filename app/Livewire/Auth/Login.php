@@ -18,8 +18,11 @@ class Login extends Component
     $this->validate([
       "email"    => "required|email",
       "password" => "required|min:6",
+    ], [
+      "required" => "Campo obrigatório",
+      "email"    => "E-mail inválido",
+      "min"      => "O campo deve ter no mínimo :min caracteres",
     ]);
-
     if (!Auth::attempt(['email' => $this->email, 'password' => $this->password])) {
       session()->flash("error", "Credenciais inválidas");
       return;
