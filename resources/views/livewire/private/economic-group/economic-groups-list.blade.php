@@ -4,6 +4,26 @@
 
   <flux:separator variant="subtle" />
 
+  @if (session()->has('error'))
+  <div
+    x-data="{ show: true }"
+    x-show="show"
+    class="flex items-center justify-between p-4 mb-4 border rounded-lg text-rose-700 bg-rose-100 border-rose-400 dark:bg-rose-900 dark:text-rose-300">
+    <span>{{ session('error') }}</span>
+    <flux:button icon="x-mark" variant="ghost" @click="show = false" class="text-rose-900 dark:text-rose-300 hover:text-rose-700" />
+  </div>
+  @endif
+
+  @if (session()->has('success'))
+  <div
+    x-data="{ show: true }"
+    x-show="show"
+    class="flex items-center justify-between p-4 mb-4 text-green-700 bg-green-100 border border-green-400 rounded-lg dark:bg-green-900 dark:text-green-300">
+    <span>{{ session('success') }}</span>
+    <flux:button icon="x-mark" variant="ghost" @click="show = false" class="text-green-900 dark:text-green-300 hover:text-green-700" />
+  </div>
+  @endif
+
   <div class="container pt-4">
     <div class="overflow-hidden bg-white rounded-lg shadow-md dark:bg-neutral-900">
       <div class="flex items-center justify-end p-4">

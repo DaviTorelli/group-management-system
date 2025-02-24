@@ -34,17 +34,20 @@ class EconomicGroupsList extends Component
       ->tap(fn($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
       ->paginate(5);
   }
-
   public function destroy(Int $id)
   {
     try {
       $economicGroup = EconomicGroup::findOrFail($id);
 
-      //TODO: Adicionar validação: caso tenham bandeiras no grupo, não deixar excluir
+      if ($economicGroup->flags()->exists()) {
+        session()->flash("error", "Não é possível excluir este grupo econômico, pois existem bandeiras vinculadas a ele.");
+        return;
+      }
+
       $economicGroup->delete();
+      session()->flash("success", "Grupo econômico excluído com sucesso!");
     } catch (\Exception $e) {
       session()->flash("error", "Erro ao excluir grupo econômico");
-      return;
     }
   }
 
