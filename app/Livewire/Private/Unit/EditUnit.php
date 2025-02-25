@@ -27,7 +27,7 @@ class EditUnit extends Component
   {
     $unit = Unit::find($id);
 
-    if (!$unit) return redirect()->route("flags");
+    if (!$unit) return redirect()->route("units");
 
     $this->unitId = $unit->id;
     $this->legal_name = $unit->legal_name;
