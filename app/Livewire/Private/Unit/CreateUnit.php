@@ -30,7 +30,7 @@ class CreateUnit extends Component
 		$this->validate([
 			"legal_name" 	 => "required|min:2|max:100",
 			"fantasy_name" => "required|min:2|max:100",
-			"cnpj"				 => "required", //TODO: validação
+			"cnpj"				 => "required", //TODO: validação + unique
 			"flagId" 			 => "required|exists:flags,id"
 		], [
 			"required" => "Campo obrigatório",
