@@ -26,14 +26,15 @@ class CreateEmployee extends Component
   {
     $this->validate([
       "name"   => "required|min:2|max:100",
-      "email"  => "required|email|min:2|max:100", //TODO unique
+      "email"  => "required|email|min:2|max:100|unique:employees",
       "cpf"    => "required", //TODO: validação + unique
       "unitId" => "required|exists:units,id"
     ], [
-      "required" => "Campo obrigatório",
-      "email"    => "E-mail inválido",
-      "min"      => "O campo deve ter no mínimo :min caracteres",
-      "max"      => "O campo deve ter no máximo :max caracteres",
+      "required"      => "Campo obrigatório",
+      "email.email"   => "E-mail inválido",
+      "email.unique"  => "Este e-mail já está em uso",
+      "min"           => "O campo deve ter no mínimo :min caracteres",
+      "max"           => "O campo deve ter no máximo :max caracteres",
       "unitId.exists" => "A unidade não foi encontrada"
     ]);
 

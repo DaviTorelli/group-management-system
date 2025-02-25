@@ -6,6 +6,9 @@ namespace App\Livewire\Private\Employee;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+//* Importações de libs.
+use Illuminate\Validation\Rule;
+
 //* Importações de models
 use App\Models\Employee;
 use App\Models\Unit;
@@ -42,15 +45,23 @@ class EditEmployee extends Component
   public function update()
   {
     $this->validate([
-      "name"   => "required|min:2|max:100",
-      "email"  => "required|email|min:2|max:100", //TODO unique + digitar mesmo e-mail
+      "name"   => "required|string|min:2|max:100",
+      "email" => [
+        "required",
+        "string",
+        "email",
+        "min:2",
+        "max:100",
+        Rule::unique('employees')->ignore($this->employeeId), // Ignores the current user's email when checking uniqueness
+      ],
       "cpf"    => "required", //TODO: validação + unique + digitar mesmo cpf
       "unitId" => "required|exists:units,id"
     ], [
-      "required" => "Campo obrigatório",
-      "email"    => "E-mail inválido",
-      "min"      => "O campo deve ter no mínimo :min caracteres",
-      "max"      => "O campo deve ter no máximo :max caracteres",
+      "required"      => "Campo obrigatório",
+      "email.email"   => "E-mail inválido",
+      "email.unique"  => "Este e-mail já está em uso",
+      "min"           => "O campo deve ter no mínimo :min caracteres",
+      "max"           => "O campo deve ter no máximo :max caracteres",
       "unitId.exists" => "A unidade não foi encontrada"
     ]);
 
