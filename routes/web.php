@@ -14,6 +14,8 @@ use App\Livewire\Private\Flag\CreateFlag;
 use App\Livewire\Private\Flag\EditFlag;
 use App\Livewire\Private\Flag\FlagsList;
 use App\Livewire\Private\Home;
+use App\Livewire\Private\Unit\CreateUnit;
+use App\Livewire\Private\Unit\EditUnit;
 use App\Livewire\Private\Unit\UnitsList;
 
 Route::get('/login', Login::class)->name('login');
@@ -41,7 +43,9 @@ Route::middleware('auth')->group(function () {
   });
 
   Route::prefix('units')->group(function () {
-    Route::get('/', UnitsList::class);
+    Route::get('/', UnitsList::class)->name('units');
+    Route::get('/create', CreateUnit::class)->name('units.create');
+    Route::get('/edit/{id}', EditUnit::class)->name('units.edit');
   });
 
   Route::prefix('employees')->group(function () {
