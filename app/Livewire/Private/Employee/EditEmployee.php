@@ -54,12 +54,19 @@ class EditEmployee extends Component
         "max:100",
         Rule::unique('employees')->ignore($this->employeeId), // Ignores the current user's email when checking uniqueness
       ],
-      "cpf"    => "required", //TODO: validação + unique + digitar mesmo cpf
+      "cpf" => [
+        "required",
+        "cpf",
+        "size:11",
+        Rule::unique('employees')->ignore($this->employeeId), // Ignores the current employee's cpf when checking uniqueness
+      ],
       "unitId" => "required|exists:units,id"
     ], [
       "required"      => "Campo obrigatório",
       "email.email"   => "E-mail inválido",
       "email.unique"  => "Este e-mail já está em uso",
+      "cpf.size"      => "O campo deve ter :size caracteres",
+      "cpf.unique"    => "Este CPF já está em uso",
       "min"           => "O campo deve ter no mínimo :min caracteres",
       "max"           => "O campo deve ter no máximo :max caracteres",
       "unitId.exists" => "A unidade não foi encontrada"
