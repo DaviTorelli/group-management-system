@@ -9,6 +9,8 @@ use App\Livewire\Auth\Login;
 use App\Livewire\Private\EconomicGroup\CreateEconomicGroup;
 use App\Livewire\Private\EconomicGroup\EconomicGroupsList;
 use App\Livewire\Private\EconomicGroup\EditEconomicGroup;
+use App\Livewire\Private\Employee\CreateEmployee;
+use App\Livewire\Private\Employee\EditEmployee;
 use App\Livewire\Private\Employee\EmployeesList;
 use App\Livewire\Private\Flag\CreateFlag;
 use App\Livewire\Private\Flag\EditFlag;
@@ -49,6 +51,8 @@ Route::middleware('auth')->group(function () {
   });
 
   Route::prefix('employees')->group(function () {
-    Route::get('/', EmployeesList::class);
+    Route::get('/', EmployeesList::class)->name('employees');
+    Route::get('/create', CreateEmployee::class)->name('employees.create');
+    Route::get('/edit/{id}', EditEmployee::class)->name('employees.edit');
   });
 });

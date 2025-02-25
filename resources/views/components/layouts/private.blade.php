@@ -23,7 +23,7 @@
       <flux:navbar.item icon="wallet" href="/economic-groups">Grupos</flux:navbar.item>
       <flux:navbar.item icon="flag" href="/flags">Bandeiras</flux:navbar.item>
       <flux:navbar.item icon="building-office" href="/units">Unidades</flux:navbar.item>
-      <flux:navbar.item icon="briefcase">Colaboradores</flux:navbar.item>
+      <flux:navbar.item icon="briefcase" href="/employees">Colaboradores</flux:navbar.item>
       <flux:separator vertical variant="subtle" class="my-2" />
       <flux:navbar.item icon="chart-pie" href="#">Relatórios</flux:navbar.item>
     </flux:navbar>
@@ -77,7 +77,7 @@
       <flux:navlist.item icon="wallet" href="/economic-groups">Grupos</flux:navlist.item>
       <flux:navlist.item icon="flag" href="/flags">Bandeiras</flux:navlist.item>
       <flux:navlist.item icon="building-office" href="/units">Unidades</flux:navlist.item>
-      <flux:navlist.item icon="briefcase" href="#">Colaboradores</flux:navlist.item>
+      <flux:navlist.item icon="briefcase" href="/employees">Colaboradores</flux:navlist.item>
       <flux:separator variant="subtle" class="my-2" />
       <flux:navlist.item icon="chart-pie" href="#">Relatórios</flux:navlist.item>
     </flux:navlist>
