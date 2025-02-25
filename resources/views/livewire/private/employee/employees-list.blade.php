@@ -64,6 +64,9 @@
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
+            <th class="px-6 py-3">
+              Unidade
+            </th>
             <th class="px-6 py-3 cursor-pointer" wire:click="sort('created_at')">
               <span class="flex flex-row items-center gap-1">
                 Criado em
@@ -88,6 +91,12 @@
             <td class="px-6 py-3">{{ $employee->name }}</td>
             <td class="px-6 py-3">{{ $employee->email }}</td>
             <td class="px-6 py-3">{{ $employee->cpf }}</td>
+            <td>
+              <div class="flex items-center gap-2 px-6 py-3">
+                <flux:icon.building-office class="size-4" />
+                {{ $employee->unit->legal_name }}
+              </div>
+            </td>
             <td class="px-6 py-3">{{ $employee->created_at->format('d/m/Y - H:i') }}</td>
             <td class="px-6 py-3">{{ $employee->updated_at->format('d/m/Y - H:i') }}</td>
             <td class="p-2 text-right">
