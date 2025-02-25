@@ -38,7 +38,7 @@ class EmployeesList extends Component
   public function destroy(Int $id)
   {
     try {
-      $employee = Employee::findOrFail($id)->delete();
+      Employee::findOrFail($id)->delete();
       session()->flash("success", "Colaborador excluído com sucesso!");
     } catch (\Exception $e) {
       session()->flash("error", "Erro ao excluir colaborador");

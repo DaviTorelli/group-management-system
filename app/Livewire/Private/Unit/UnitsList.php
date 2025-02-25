@@ -40,8 +40,13 @@ class UnitsList extends Component
 		try {
 			$unit = Unit::findOrFail($id);
 
-			//TODO: Adicionar validação: caso tenham colaboradores na unidade, não deixar excluir
+			if ($unit->employees()->exists()) {
+				session()->flash("error", "Não é possível excluir esta unidade, pois existem colaboradores vinculados a ela.");
+				return;
+			}
+
 			$unit->delete();
+			session()->flash("success", "Unidade excluída com sucesso!");
 		} catch (\Exception $e) {
 			session()->flash("error", "Erro ao excluir unidade");
 			return;
