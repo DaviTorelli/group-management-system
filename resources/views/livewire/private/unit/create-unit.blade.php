@@ -15,11 +15,14 @@
       placeholder="Ex: Unidade do Centro"
       wire:model="fantasy_name" />
 
-    <flux:input
-      label="CNPJ"
-      type="number"
-      placeholder="Ex: TODO"
-      wire:model="cnpj" />
+    <div>
+      <flux:input
+        label="CNPJ"
+        type="number"
+        placeholder="Ex: 12.345.678/0001-90"
+        wire:model="cnpj" />
+      <p class="text-sm text-gray-500 ">Digite apenas os números, exemplo: 61274036000158</p>
+    </div>
 
     <flux:select
       label="Bandeira"
