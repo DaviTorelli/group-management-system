@@ -38,10 +38,15 @@ class FlagsList extends Component
   public function destroy(Int $id)
   {
     try {
-      $economicGroup = Flag::findOrFail($id);
+      $flag = Flag::findOrFail($id);
 
-      //TODO: Adicionar validação: caso tenham unidades no grupo, não deixar excluir
-      $economicGroup->delete();
+      if ($flag->units()->exists()) {
+        session()->flash("error", "Não é possível excluir esta bandeira, pois existem unidades vinculadas a ela.");
+        return;
+      }
+
+      $flag->delete();
+      session()->flash("success", "Bandeira excluída com sucesso!");
     } catch (\Exception $e) {
       session()->flash("error", "Erro ao excluir bandeira");
       return;

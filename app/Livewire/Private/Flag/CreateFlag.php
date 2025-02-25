@@ -3,11 +3,11 @@
 namespace App\Livewire\Private\Flag;
 
 //* Importações Livewire
-use App\Models\EconomicGroup;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 //* Importações de models
+use App\Models\EconomicGroup;
 use App\Models\Flag;
 
 class CreateFlag extends Component
