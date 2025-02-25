@@ -46,31 +46,37 @@
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('legal_name')">
               <span class="flex flex-row items-center gap-1">
                 Razão Social
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('fantasy_name')">
               <span class="flex flex-row items-center gap-1">
                 Nome Fantasia
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('cnpj')">
               <span class="flex flex-row items-center gap-1">
                 CNPJ
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3">
+              Bandeira
+            </th>
+            <th class="px-6 py-3">
+              Colaboradores
+            </th>
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('created_at')">
               <span class="flex flex-row items-center gap-1">
                 Criado em
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('updated_at')">
               <span class="flex flex-row items-center gap-1">
                 Última atualização
                 <flux:icon.arrows-up-down variant="micro" />
@@ -88,6 +94,18 @@
             <td class="px-6 py-3">{{ $unit->legal_name }}</td>
             <td class="px-6 py-3">{{ $unit->fantasy_name }}</td>
             <td class="px-6 py-3">{{ $unit->cnpj }}</td>
+            <td>
+              <div class="flex items-center gap-2 px-6 py-3">
+                <flux:icon.flag class="size-4" />
+                {{ $unit->flag->name }}
+              </div>
+            </td>
+            <td>
+              <div class="flex items-center gap-2 px-6 py-3">
+                <flux:icon.briefcase class="size-4" />
+                {{ $unit->employees->count() }}
+              </div>
+            </td>
             <td class="px-6 py-3">{{ $unit->created_at->format('d/m/Y - H:i') }}</td>
             <td class="px-6 py-3">{{ $unit->updated_at->format('d/m/Y - H:i') }}</td>
             <td class="p-2 text-right">

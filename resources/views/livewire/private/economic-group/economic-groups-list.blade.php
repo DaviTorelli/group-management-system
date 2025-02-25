@@ -46,19 +46,22 @@
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('name')">
               <span class="flex flex-row items-center gap-1">
                 Nome
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3">
+              Bandeiras
+            </th>
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('created_at')">
               <span class="flex flex-row items-center gap-1">
                 Criado em
                 <flux:icon.arrows-up-down variant="micro" />
               </span>
             </th>
-            <th class="px-6 py-3 cursor-pointer" wire:click="sort('id')">
+            <th class="px-6 py-3 cursor-pointer" wire:click="sort('updated_at')">
               <span class="flex flex-row items-center gap-1">
                 Última atualização
                 <flux:icon.arrows-up-down variant="micro" />
@@ -74,6 +77,12 @@
           <tr class="hover:bg-gray-50 dark:hover:bg-gray-600" key="{{ $group->id }}">
             <td class="px-6 py-3">{{ $group->id }}</td>
             <td class="px-6 py-3">{{ $group->name }}</td>
+            <td>
+              <div class="flex items-center gap-2 px-6 py-3">
+                <flux:icon.flag class="size-4" />
+                {{ $group->flags->count() }}
+              </div>
+            </td>
             <td class="px-6 py-3">{{ $group->created_at->format('d/m/Y - H:i') }}</td>
             <td class="px-6 py-3">{{ $group->updated_at->format('d/m/Y - H:i') }}</td>
             <td class="p-2 text-right">
