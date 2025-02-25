@@ -15,11 +15,17 @@
       placeholder="Ex: johndoe@example.com"
       wire:model="email" />
 
-    <flux:input
-      label="CPF"
-      type="number"
-      placeholder="Ex: TODO"
-      wire:model="cpf" />
+    <div>
+      <flux:input
+        label="CPF"
+        type="text"
+        placeholder="Ex: 123.456.789-10"
+        wire:model="cpf"
+        inputmode="numeric"
+        pattern="[0-9]*"
+        oninput="this.value = this.value.replace(/\D/g, '')" />
+      <p class="text-sm text-gray-500">Digite apenas os números, exemplo: 12345678910</p>
+    </div>
 
     <flux:select
       label="Unidade"
