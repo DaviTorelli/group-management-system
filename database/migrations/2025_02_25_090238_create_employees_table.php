@@ -8,13 +8,13 @@ return new class extends Migration
 {
   public function up(): void
   {
-    Schema::create('units', function (Blueprint $table) {
+    Schema::create('employees', function (Blueprint $table) {
       $table->id();
-      $table->string("legal_name", 100);
-      $table->string("fantasy_name", 100);
-      $table->integer("cnpj")->unique(); //TODO: VALOR MÁXIMO CNPJ
+      $table->string('name', 100);
+      $table->string('email', 100)->unique();
+      $table->integer('cpf')->unique(); //TODO: Valor máximo CPF
 
-      $table->foreignId('flag_id')->constrained();
+      $table->foreignId('unit_id')->constrained();
 
       $table->timestamps();
     });
@@ -22,6 +22,6 @@ return new class extends Migration
 
   public function down(): void
   {
-    Schema::dropIfExists('units');
+    Schema::dropIfExists('employees');
   }
 };

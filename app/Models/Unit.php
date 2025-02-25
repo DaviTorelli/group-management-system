@@ -4,6 +4,7 @@ namespace App\Models;
 
 //* Importação de tipagem
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 //* Importação de libs
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -24,5 +25,10 @@ class Unit extends Model
   public function flag(): BelongsTo
   {
     return $this->belongsTo(Flag::class);
+  }
+
+  public function employees(): HasMany
+  {
+    return $this->hasMany(Employee::class);
   }
 }

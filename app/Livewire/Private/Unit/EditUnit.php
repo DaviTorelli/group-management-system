@@ -27,7 +27,7 @@ class EditUnit extends Component
   {
     $unit = Unit::find($id);
 
-    if (!$unit) return redirect()->route("flags");
+    if (!$unit) return redirect()->route("units");
 
     $this->unitId = $unit->id;
     $this->legal_name = $unit->legal_name;
@@ -44,7 +44,7 @@ class EditUnit extends Component
     $this->validate([
       "legal_name"   => "required|min:2|max:100",
       "fantasy_name" => "required|min:2|max:100",
-      "cnpj"         => "required", //TODO: validação
+      "cnpj"         => "required", //TODO: validação + digitar mesmo cnpj
       "flagId"       => "required|exists:flags,id"
     ], [
       "required" => "Campo obrigatório",
