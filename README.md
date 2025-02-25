@@ -25,10 +25,10 @@ cd group-management-system
 
 ### 2️⃣ Configure o ambiente
 
-Duplique o arquivo `.env-example` para `.env`:
+Duplique o arquivo `.env.example` para `.env`:
 
 ```sh
-cp .env-example .env
+cp .env.example .env
 ```
 
 Atualize as configurações do banco de dados no arquivo `.env`:
