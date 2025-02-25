@@ -12,7 +12,7 @@ return new class extends Migration
       $table->id();
       $table->string("legal_name", 100);
       $table->string("fantasy_name", 100);
-      $table->integer("cnpj")->unique(); //TODO: VALOR MÁXIMO CNPJ
+      $table->string("cnpj", 14);
 
       $table->foreignId('flag_id')->constrained();
 

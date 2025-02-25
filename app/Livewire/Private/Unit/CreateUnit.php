@@ -16,7 +16,7 @@ class CreateUnit extends Component
 
 	public string $legal_name = "";
 	public string $fantasy_name = "";
-	public int|null $cnpj = null;
+	public int $cnpj;
 	public int|null $flagId = null;
 	public array $flags = [];
 
@@ -30,12 +30,14 @@ class CreateUnit extends Component
 		$this->validate([
 			"legal_name" 	 => "required|min:2|max:100",
 			"fantasy_name" => "required|min:2|max:100",
-			"cnpj"				 => "required", //TODO: validação + unique
+			"cnpj"				 => "required|size:14|cnpj|unique:units",
 			"flagId" 			 => "required|exists:flags,id"
 		], [
-			"required" => "Campo obrigatório",
-			"min" => "O campo deve ter no mínimo :min caracteres",
-			"max" => "O campo deve ter no máximo :max caracteres",
+			"required" 			=> "Campo obrigatório",
+			"cnpj.size" 		=> "O campo deve ter :size caracteres",
+			"cnpj.unique" 	=> "Este CNPJ já está em uso",
+			"min" 			  	=> "O campo deve ter no mínimo :min caracteres",
+			"max" 			  	=> "O campo deve ter no máximo :max caracteres",
 			"flagId.exists" => "A bandeira não foi encontrada"
 		]);
 

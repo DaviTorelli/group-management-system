@@ -6,6 +6,9 @@ namespace App\Livewire\Private\Unit;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
+//* Importações de libs.
+use Illuminate\Validation\Rule;
+
 //* Importações de models
 use App\Models\Flag;
 use App\Models\Unit;
@@ -44,12 +47,19 @@ class EditUnit extends Component
     $this->validate([
       "legal_name"   => "required|min:2|max:100",
       "fantasy_name" => "required|min:2|max:100",
-      "cnpj"         => "required", //TODO: validação + digitar mesmo cnpj
+      "cnpj" => [
+        "required",
+        "cnpj",
+        "size:14",
+        Rule::unique('units')->ignore($this->unitId), // Ignores the current unit's cnpj when checking uniqueness
+      ],
       "flagId"       => "required|exists:flags,id"
     ], [
-      "required" => "Campo obrigatório",
-      "min" => "O campo deve ter no mínimo :min caracteres",
-      "max" => "O campo deve ter no máximo :max caracteres",
+      "required"      => "Campo obrigatório",
+      "cnpj.size"     => "O campo deve ter :size caracteres",
+      "cnpj.unique"   => "Este CNPJ já está em uso",
+      "min"           => "O campo deve ter no mínimo :min caracteres",
+      "max"           => "O campo deve ter no máximo :max caracteres",
       "flagId.exists" => "A bandeira não foi encontrada"
     ]);
 
