@@ -110,6 +110,10 @@
             <td class="p-2 text-right">
               <span class="flex items-center justify-end gap-2">
                 <flux:button
+                  href="/employees/view/{{ $employee->id }}"
+                  icon="eye" />
+
+                <flux:button
                   href="/employees/edit/{{ $employee->id }}"
                   icon="pencil-square"
                   variant="primary" />

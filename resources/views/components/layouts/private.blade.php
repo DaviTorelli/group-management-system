@@ -25,7 +25,15 @@
       <flux:navbar.item icon="building-office" href="/units">Unidades</flux:navbar.item>
       <flux:navbar.item icon="briefcase" href="/employees">Colaboradores</flux:navbar.item>
       <flux:separator vertical variant="subtle" class="my-2" />
-      <flux:navbar.item icon="chart-pie" href="#">Relatórios</flux:navbar.item>
+      <flux:dropdown class="max-lg:hidden">
+        <flux:navbar.item icon="chart-pie" icon-trailing="chevron-down">Relatórios</flux:navbar.item>
+
+        <flux:navmenu>
+          <flux:navmenu.item href="/reports/units">Colaboradores por unidade</flux:navmenu.item>
+          <flux:navmenu.item href="/reports/flags">Colaboradores por bandeira</flux:navmenu.item>
+          <flux:navmenu.item href="/reports/economic-groups">Colaboradores por grupo</flux:navmenu.item>
+        </flux:navmenu>
+      </flux:dropdown>
     </flux:navbar>
 
     <flux:spacer />
@@ -52,7 +60,7 @@
       @endauth
 
       <flux:menu>
-        <flux:navmenu.item href="#" icon="user">{{ Auth::user()->name }}</flux:navmenu.item>
+        <flux:navmenu.item icon="user">{{ Auth::user()->name }}</flux:navmenu.item>
 
         <flux:menu.separator />
 
@@ -79,7 +87,11 @@
       <flux:navlist.item icon="building-office" href="/units">Unidades</flux:navlist.item>
       <flux:navlist.item icon="briefcase" href="/employees">Colaboradores</flux:navlist.item>
       <flux:separator variant="subtle" class="my-2" />
-      <flux:navlist.item icon="chart-pie" href="#">Relatórios</flux:navlist.item>
+      <flux:navlist.group expandable heading="Relatórios" icon="chart-pie">
+        <flux:navlist.item href="/reports/units">Colaboradores por unidade</flux:navlist.item>
+        <flux:navlist.item href="/reports/flags">Colaboradores por bandeira</flux:navlist.item>
+        <flux:navlist.item href="/reports/economic-groups">Colaboradores por grupo</flux:navlist.item>
+      </flux:navlist.group>
     </flux:navlist>
 
     <flux:spacer />
@@ -101,6 +113,8 @@
 
   {{ $slot }}
 
+  @livewireScripts
+  @livewireChartsScripts
   @fluxScripts
 </body>
 
