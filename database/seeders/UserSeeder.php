@@ -9,13 +9,14 @@ use Illuminate\Support\Facades\Hash;
 //* Importações de models
 use App\Models\User;
 
-class DatabaseSeeder extends Seeder
+class UserSeeder extends Seeder
 {
   public function run(): void
   {
-    $this->call([UserSeeder::class]);
-
-    // em produção (APP_DEBUG=false), não rodamos a seed GMS
-    if (config('app.debug')) $this->call([GroupManagementSeeder::class]);
+    User::factory()->create([
+      'name'     => 'Michael Jackson',
+      'email'    => 'michael.jackson@email.com',
+      'password' => Hash::make("password")
+    ]);
   }
 }
