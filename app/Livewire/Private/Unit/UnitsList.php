@@ -14,23 +14,37 @@ class UnitsList extends Component
 {
 	#[Layout("components.layouts.private")]
 
-	public $sortBy = 'legal_name';
-	public $sortDirection = 'desc';
+	public string $sortBy = "legal_name";
+	public string $sortDirection = "desc";
+	public string $search = "";
+	public string $searchQuery = "";
 
 	public function sort($column)
 	{
 		if ($this->sortBy === $column) {
-			$this->sortDirection = $this->sortDirection === 'asc' ? 'desc' : 'asc';
+			$this->sortDirection = $this->sortDirection === "asc" ? "desc" : "asc";
 		} else {
 			$this->sortBy = $column;
-			$this->sortDirection = 'asc';
+			$this->sortDirection = "asc";
 		}
+	}
+
+	public function searchUnits()
+	{
+		$this->searchQuery = $this->search;
 	}
 
 	#[Computed()]
 	public function units()
 	{
 		return Unit::query()
+			->when($this->search, function ($query) {
+				$query->where(
+					fn($q) =>
+					$q->where("fantasy_name", "LIKE", "%{$this->search}%")
+						->orWhere("legal_name", "LIKE", "%{$this->search}%")
+				);
+			})
 			->tap(fn($query) => $this->sortBy ? $query->orderBy($this->sortBy, $this->sortDirection) : $query)
 			->paginate(5);
 	}
@@ -55,6 +69,6 @@ class UnitsList extends Component
 
 	public function render()
 	{
-		return view('livewire.private.unit.units-list', ['units' => $this->units()]);
+		return view("livewire.private.unit.units-list", ["units" => $this->units()]);
 	}
 }
