@@ -5,22 +5,37 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 //* Componentes Livewire
+//auth
 use App\Livewire\Auth\Login;
+
+//home
+use App\Livewire\Private\Home;
+
+//grupo economico
 use App\Livewire\Private\EconomicGroup\CreateEconomicGroup;
 use App\Livewire\Private\EconomicGroup\EconomicGroupsList;
 use App\Livewire\Private\EconomicGroup\EditEconomicGroup;
+
+//bandeira
+use App\Livewire\Private\Flag\CreateFlag;
+use App\Livewire\Private\Flag\EditFlag;
+use App\Livewire\Private\Flag\FlagsList;
+
+//unidade
+use App\Livewire\Private\Unit\CreateUnit;
+use App\Livewire\Private\Unit\EditUnit;
+use App\Livewire\Private\Unit\UnitsList;
+
+//colaborador
 use App\Livewire\Private\Employee\CreateEmployee;
 use App\Livewire\Private\Employee\EditEmployee;
 use App\Livewire\Private\Employee\EmployeesList;
 use App\Livewire\Private\Employee\ViewEmployee;
-use App\Livewire\Private\Flag\CreateFlag;
-use App\Livewire\Private\Flag\EditFlag;
-use App\Livewire\Private\Flag\FlagsList;
-use App\Livewire\Private\Home;
+
+//relatorios
+use App\Livewire\Private\Report\EconomicGroupEmployees;
+use App\Livewire\Private\Report\FlagEmployees;
 use App\Livewire\Private\Report\UnitEmployees;
-use App\Livewire\Private\Unit\CreateUnit;
-use App\Livewire\Private\Unit\EditUnit;
-use App\Livewire\Private\Unit\UnitsList;
 
 Route::get('/login', Login::class)->name('login');
 Route::post('/logout', function () {
@@ -61,5 +76,7 @@ Route::middleware('auth')->group(function () {
 
   Route::prefix('reports')->group(function () {
     Route::get('/units', UnitEmployees::class)->name('unit-employees');
+    Route::get('/flags', FlagEmployees::class)->name('flag-employees');
+    Route::get('/economic-groups', EconomicGroupEmployees::class)->name('economic-group-employees');
   });
 });
