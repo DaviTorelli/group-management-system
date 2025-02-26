@@ -17,6 +17,7 @@ use App\Livewire\Private\Flag\CreateFlag;
 use App\Livewire\Private\Flag\EditFlag;
 use App\Livewire\Private\Flag\FlagsList;
 use App\Livewire\Private\Home;
+use App\Livewire\Private\Report\UnitEmployees;
 use App\Livewire\Private\Unit\CreateUnit;
 use App\Livewire\Private\Unit\EditUnit;
 use App\Livewire\Private\Unit\UnitsList;
@@ -56,5 +57,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/create', CreateEmployee::class)->name('employees.create');
     Route::get('/edit/{id}', EditEmployee::class)->name('employees.edit');
     Route::get('/view/{id}', ViewEmployee::class)->name('employees.view');
+  });
+
+  Route::prefix('reports')->group(function () {
+    Route::get('/units', UnitEmployees::class)->name('unit-employees');
   });
 });
