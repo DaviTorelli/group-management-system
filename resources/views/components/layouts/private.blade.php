@@ -29,7 +29,9 @@
         <flux:navbar.item icon="chart-pie" icon-trailing="chevron-down">Relatórios</flux:navbar.item>
 
         <flux:navmenu>
-          <flux:navmenu.item href="#">Marketing site</flux:navmenu.item>
+          <flux:navmenu.item href="/reports/units">Colaboradores por unidade</flux:navmenu.item>
+          <flux:navmenu.item href="/reports/flags">Colaboradores por bandeira</flux:navmenu.item>
+          <flux:navmenu.item href="/reports/economic-groups">Colaboradores por grupo</flux:navmenu.item>
         </flux:navmenu>
       </flux:dropdown>
     </flux:navbar>
@@ -86,7 +88,9 @@
       <flux:navlist.item icon="briefcase" href="/employees">Colaboradores</flux:navlist.item>
       <flux:separator variant="subtle" class="my-2" />
       <flux:navlist.group expandable heading="Relatórios" icon="chart-pie">
-        <flux:navlist.item href=" #">Marketing site</flux:navlist.item>
+        <flux:navlist.item href="/reports/units">Colaboradores por unidade</flux:navlist.item>
+        <flux:navlist.item href="/reports/flags">Colaboradores por bandeira</flux:navlist.item>
+        <flux:navlist.item href="/reports/economic-groups">Colaboradores por grupo</flux:navlist.item>
       </flux:navlist.group>
     </flux:navlist>
 
@@ -109,6 +113,8 @@
 
   {{ $slot }}
 
+  @livewireScripts
+  @livewireChartsScripts
   @fluxScripts
 </body>
 
