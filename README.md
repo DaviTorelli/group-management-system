@@ -99,3 +99,13 @@ Acesse no navegador: [http://127.0.0.1:8000](http://127.0.0.1:8000)
     -   senha: "password"
 -   Ao cadastrar uma **unidade**, use esse [Gerador de CNPJ](https://www.geradorcnpj.com/):
 -   Ao cadastrar um **colaborador**, use esse [Gerador de CPF](https://www.geradordecpf.org/):
+
+## 📖 Tecnologias e Bibliotecas
+
+-   [Laravel](https://laravel.com/)
+-   [Livewire](https://livewire.laravel.com/)
+-   [TailwindCSS](https://tailwindcss.com/)
+-   [Sanctum](https://laravel.com/docs/11.x/sanctum): Autenticação
+-   [Flux](https://fluxui.dev/): Biblioteca de Componentes
+-   [Livewire-Charts](https://github.com/asantibanez/livewire-charts): Gráficos
+-   [pt-br-validator](https://github.com/LaravelLegends/pt-br-validator): Validações específicas (CPF e CNPJ)
