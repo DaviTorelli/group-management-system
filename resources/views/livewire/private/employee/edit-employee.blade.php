@@ -1,6 +1,6 @@
 <flux:main container>
   <flux:heading size="xl" level="1">Editar colaborador</flux:heading>
-  <flux:subheading size="lg" class="mb-6">Faça alterações no colaborador <strong>"{{ $this->name }}"</strong>. Ao finalizar, clique em <strong>atualizar</strong>.</flux:subheading>
+  <flux:subheading size="lg" class="mb-6">Faça alterações no(a) colaborador(a) <strong>"{{ $this->name }}"</strong>. Ao finalizar, clique em <strong>atualizar</strong>.</flux:subheading>
 
   <flux:separator variant="subtle" />
 
