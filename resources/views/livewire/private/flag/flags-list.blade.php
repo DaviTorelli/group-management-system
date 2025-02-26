@@ -26,10 +26,18 @@
 
   <div class="container pt-4">
     <div class="overflow-hidden bg-white rounded-lg shadow-md dark:bg-neutral-900">
-      <div class="flex items-center justify-end p-4">
-        <a class="px-4 py-2 font-bold text-white rounded bg-lime-600 hover:bg-lime-700" href="{{ route('flags.create') }}">
-          + Adicionar Bandeira
-        </a>
+      <div class="flex items-center justify-between gap-2 p-4">
+        <div class="flex gap-2">
+          <flux:input
+            placeholder="Pesquisar por nome..."
+            type="text"
+            wire:model="search">
+            <x-slot name="iconTrailing">
+              <flux:button size="sm" variant="filled" icon="magnifying-glass" class="-mr-1" wire:click="searchFlags" />
+            </x-slot>
+          </flux:input>
+        </div>
+        <flux:button variant="primary" icon="plus" href="{{ route('flags.create') }}" />
       </div>
 
       @if ($flags->isEmpty())

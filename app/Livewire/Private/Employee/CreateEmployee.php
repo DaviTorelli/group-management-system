@@ -3,6 +3,7 @@
 namespace App\Livewire\Private\Employee;
 
 //* Importações Livewire
+use Livewire\Attributes\Layout;
 use Livewire\Component;
 
 //* Importações de models
@@ -11,6 +12,8 @@ use App\Models\Unit;
 
 class CreateEmployee extends Component
 {
+  #[Layout("components.layouts.private")]
+
   public string $name = "";
   public string $email = "";
   public int $cpf;
