@@ -109,3 +109,8 @@ Acesse no navegador: [http://127.0.0.1:8000](http://127.0.0.1:8000)
 -   [Flux](https://fluxui.dev/): Biblioteca de Componentes
 -   [Livewire-Charts](https://github.com/asantibanez/livewire-charts): Gráficos
 -   [pt-br-validator](https://github.com/LaravelLegends/pt-br-validator): Validações específicas (CPF e CNPJ)
+
+## Diagrama de Classes
+
+![diagrama-classes-gestao-voch](https://github.com/user-attachments/assets/766dcfdc-5e58-4416-9024-bfec794ee363)
+
